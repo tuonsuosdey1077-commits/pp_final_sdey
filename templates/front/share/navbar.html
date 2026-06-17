@@ -1,0 +1,62 @@
+<header class="kronos-header sticky-top">
+    <nav class="navbar navbar-expand-lg kronos-navbar">
+        <div class="container">
+
+            <!-- Logo -->
+            <a class="navbar-brand kronos-logo" href="{{ url_for('index') }}">
+                KRONOS
+                <span>Advanced Timepieces</span>
+            </a>
+
+            <!-- Mobile Button -->
+            <button
+                class="navbar-toggler kronos-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Menu -->
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav mx-auto gap-lg-4">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.endpoint == 'index' %}active{% endif %}" href="{{ url_for('index') }}">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.endpoint == 'products_page' or request.endpoint == 'product_detail' %}active{% endif %}" href="{{ url_for('products_page') }}">Collections</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.endpoint == 'about' %}active{% endif %}" href="{{ url_for('about') }}">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.endpoint == 'contact' %}active{% endif %}" href="{{ url_for('contact') }}">Contact</a>
+                    </li>
+                </ul>
+
+                <div class="kronos-actions d-flex align-items-center gap-3">
+
+                    <a href="{{ url_for('account') }}" class="nav-icon-link {% if request.endpoint == 'account' %}active{% endif %}">
+                        <i class="bi bi-person"></i>
+                    </a>
+
+                    <a href="{{ url_for('cart') }}" class="nav-icon-link cart-link {% if request.endpoint == 'cart' %}active{% endif %}">
+                        <i class="bi bi-bag"></i>
+                        <span class="cart-count">{{ cart_count }}</span>
+                    </a>
+
+                    <a href="{{ url_for('login') }}" class="btn btn-primary {% if request.endpoint == 'login' %}active{% endif %}">
+                        Sign In
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+</header>
